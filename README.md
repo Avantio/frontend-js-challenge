@@ -1,11 +1,9 @@
 # Frontend JS Challenge
 ![atrends](./assets/readme/first.png)
 
-Nuestros ingenieros de backend han implementado una sencilla API para acceder a la información y está accesible de manera pública en https://challenge.avantio.pro, sin embargo necesitarás enviar el token que te hemos enviado junto al enlace a este repositorio en una cabecera concreta de cada request, esta cabecera es `X-Avantio-Auth`.
+Nuestros ingenieros de backend han implementado una sencilla API para acceder a la información y está accesible de manera pública en https://challenge.avantio.pro, sin embargo necesitarás enviar el token que te hemos enviado junto al enlace a este repositorio en una cabecera concreta de cada request, esta cabecera es `X-Avantio-Auth`. Esta cabecera ya se está enviando en cada petición que lo necesita gracias al interceptor ubicado en el fichero <code>[src/app/trends/auth-interceptor.ts](src/app/trends/auth-interceptor.ts)</code> y a la variables de entorno `avantioAPIAuthToken` definida en el fichero <code>[src/environments/environment.ts](src/environments/environment.ts)</code>. Lo único que tendrás que hacer respecto a esto es copiar el token que te hemos enviado en la variable de entorno `avantioAPIAuthToken` de dicho fichero.
 
-Esta cabecera ya se está enviando en cada petición que lo necesita gracias al interceptor ubicado en el fichero <code>[src/app/trends/auth-interceptor.ts](src/app/trends/auth-interceptor.ts)</code> y a las variables de entorno definidas en los ficheros <code>[src/environments/environment.ts](src/environments/environment.ts)</code> y <code>[src/environments/environment.prod.ts](src/environments/environment.prod.ts)</code>. Lo único que tendrás que hacer respecto a esto es copiar el token que te hemos enviado en la variable de entorno `avantioAPIAuthToken` en cada uno de estos dos ficheros.
-
-Nuestros amigos de UX/UI nos han dejado un diseño preparado en figma, para tener acceso a toda la funcionalidad de la plataforma es necesario el registro, es muy similar a Invision o Zeplin, así que si no lo has utilizado nunca no te preocupes, te harás con ella enseguida: https://www.figma.com/file/OZo8wGsr4aDns0lnOqYk39/Frontend-Challenge-atrendsPRO?node-id=0%3A1
+Nuestros compañeras de UX/UI nos han dejado un diseño preparado en figma, para tener acceso a toda la funcionalidad de la plataforma es necesario el registro, es muy similar a Invision o Zeplin, así que si no lo has utilizado nunca no te preocupes, te harás con ella enseguida: https://www.figma.com/file/OZo8wGsr4aDns0lnOqYk39/Frontend-Challenge-atrendsPRO?node-id=0%3A1
 
 En el diseño se aprecian dos vistas:
 1. Listado de noticias
@@ -32,7 +30,8 @@ Deberás modificar y/o ampliar el código existente para implementar las siguien
 
 ## Que se espera de ti
 
-> 💡 **Puedes usar cualquier versión de Angular.**
+> [!NOTE]
+> Puedes usar cualquier versión de Angular.
 
 Se valorará:
 - La arquitectura del proyecto.
@@ -46,9 +45,14 @@ Se tendrá en cuenta también:
 - Siéntete libre a la hora de añadir cualquier mejora de UX/UI.
 - Utilización de patrones de arquitectura de datos.
 
-> ⭐️ **BONUS:** *Nuestro departamento de UX no ha tenido tiempo en pensar en las animaciones. Queda de tu parte añadir las que consideres necesarias.*
+> [!NOTE]
+> Puedes hacer todas las mejoras visuales que consideres que aporten valor al diseño actual.
 
 ## Especificación del API
+
+> [!WARNING]
+> En el momento de escribir esta advertencia, existe un bug en nuestro backend que impide añadir la URL de la imagen a una noticia, tanto para la creación (POST) como la actualización (PUT), pero sí que es necesario enviar dicha propiedad al API porque es requerida para la validación (fallará si no la recibe). Es decir, que si realizas una llamada POST para la creación de una nueva noticia y le pasas la propiedad "image": "http://.../example.png" en el objeto JSON que se envía como BODY de la petición, la petición se realizará, pero la URL no quedará guardada y no la recibirás al pedir el listado de noticias o la noticia individual. Pronto solucionaremos este problema, pero puede que en el momento de realizar la prueba, todavía no lo hayamos hecho, disculpa las molestias.
+
 ### Listado de noticias
 Los endpoints de borrado de noticias y update, sobre noticias que no hayas creado con tu token, funcionarán a modo mockup, no  actualizarán ni borrarán noticias, pero la respuesta será la misma.
 ```

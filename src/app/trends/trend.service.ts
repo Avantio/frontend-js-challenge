@@ -7,13 +7,10 @@ import { GetOneTrendResponse } from './models/get-one-trend-response.model';
 import { Trend } from './models/trend.model';
 import { TrendProvider } from './models/trend-provider.model';
 import { TrendResponse } from './models/trend-response.model';
-import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class TrendService {
-  private readonly urlBase = environment.avantioAPIHost;
-
-  public readonly getAllUrl = `${this.urlBase}/v1/trends`;
+  public readonly getAllUrl = `/v1/trends`;
 
   constructor(private httpClient: HttpClient) {}
 
