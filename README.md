@@ -50,9 +50,6 @@ Se tendrá en cuenta también:
 
 ## Especificación del API
 
-> [!WARNING]
-> En el momento de escribir esta advertencia, existe un bug en nuestro backend que impide añadir la URL de la imagen a una noticia, tanto para la creación (POST) como la actualización (PUT), pero sí que es necesario enviar dicha propiedad al API porque es requerida para la validación (fallará si no la recibe). Es decir, que si realizas una llamada POST para la creación de una nueva noticia y le pasas la propiedad "image": "http://.../example.png" en el objeto JSON que se envía como BODY de la petición, la petición se realizará, pero la URL no quedará guardada y no la recibirás al pedir el listado de noticias o la noticia individual. Pronto solucionaremos este problema, pero puede que en el momento de realizar la prueba, todavía no lo hayamos hecho, disculpa las molestias.
-
 ### Listado de noticias
 Los endpoints de borrado de noticias y update, sobre noticias que no hayas creado con tu token, funcionarán a modo mockup, no  actualizarán ni borrarán noticias, pero la respuesta será la misma.
 ```
